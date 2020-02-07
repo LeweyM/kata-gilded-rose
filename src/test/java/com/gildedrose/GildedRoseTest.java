@@ -110,7 +110,7 @@ class GildedRoseTest {
 
     @Test
     void givenQualityIsLessThanFifty_andSellInLessThanSix_thenQualityIncreasesByThree() {
-        Item[] items = {new Item(CONCERT, 8, 40)};
+        Item[] items = {new Item(CONCERT, 4, 40)};
         app = new GildedRose(items);
 
         app.updateQuality();
