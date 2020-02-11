@@ -21,73 +21,52 @@ class GildedRose {
                 if (items[i].quality < 50) {
                     items[i].quality = items[i].quality + 1;
 
-                    if (items[i].sellIn < 11) {
-                        if (items[i].quality < 50) {
-                            items[i].quality = items[i].quality + 1;
-                        }
+                    if (items[i].sellIn < 11 && items[i].quality < 50) {
+                        items[i].quality = items[i].quality + 1;
                     }
 
-                    if (items[i].sellIn < 6) {
-                        if (items[i].quality < 50) {
-                            items[i].quality = items[i].quality + 1;
-                        }
+                    if (items[i].sellIn < 6 && items[i].quality < 50) {
+                        items[i].quality = items[i].quality + 1;
                     }
                 }
 
-                defaultSellinDecrement(i);
+                defaultSellInDecrement(i);
 
                 if (items[i].sellIn < 0) {
                     items[i].quality = 0;
                 }
-
                 continue;
             }
 
-            if (!items[i].name.equals(AGED_BRIE)
-                    && !items[i].name.equals(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT)) {
-                //default case
-                defaultQuality(i);
-            } else {
-                // brie and concert cases
+            if (items[i].name.equals(AGED_BRIE)) {
                 if (items[i].quality < 50) {
                     items[i].quality = items[i].quality + 1;
                 }
-            }
-
-            defaultSellinDecrement(i);
-
-            if (items[i].sellIn < 0) {
-                if (!items[i].name.equals(AGED_BRIE)) {
-                    if (!items[i].name.equals(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT)) {
-                        //default case
-                        defaultIfSellinLessThanZero(i);
-                    } else {
-                        // concert case
-                        items[i].quality = 0;
-                    }
-                } else {
-                    //brie case
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
-                    }
+                defaultSellInDecrement(i);
+                if (items[i].quality < 50 && items[i].sellIn < 0) {
+                    items[i].quality = items[i].quality + 1;
                 }
+                continue;
             }
+
+            defaultProcessing(i);
         }
     }
 
-    private void defaultSellinDecrement(int i) {
+    private void defaultProcessing(int i) {
+        if (items[i].quality > 0) {
+            items[i].quality = items[i].quality - 1;
+        }
+
+        defaultSellInDecrement(i);
+
+        if (items[i].sellIn < 0 && items[i].quality > 0) {
+            items[i].quality = items[i].quality - 1;
+        }
+    }
+
+    private void defaultSellInDecrement(int i) {
         items[i].sellIn = items[i].sellIn - 1;
     }
 
-    private void defaultQuality(int i) {
-        if (items[i].quality > 0) {
-            items[i].quality = items[i].quality - 1;
-        }
-    }
-
-    private void defaultIfSellinLessThanZero(int i) {
-        if (items[i].quality > 0) {
-            items[i].quality = items[i].quality - 1;
-        }
-    }
 }
