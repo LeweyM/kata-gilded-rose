@@ -12,61 +12,50 @@ class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
+            Item item = items[i];
 
-            if (items[i].name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
+            if (item.name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
                 continue;
             }
 
-            if (items[i].name.equals(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT)) {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
+            if (item.name.equals(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT)) {
+                if (item.quality < 50) {
+                    item.quality++;
 
-                    if (items[i].sellIn < 11 && items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
+                    if (item.sellIn < 11 && item.quality < 50) {
+                        item.quality++;
                     }
 
-                    if (items[i].sellIn < 6 && items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
+                    if (item.sellIn < 6 && item.quality < 50) {
+                        item.quality++;
                     }
                 }
 
-                defaultSellInDecrement(i);
+                defaultSellInDecrement(item);
 
-                if (items[i].sellIn < 0) {
-                    items[i].quality = 0;
+                if (item.sellIn < 0) {
+                    item.quality = 0;
                 }
                 continue;
             }
 
-            if (items[i].name.equals(AGED_BRIE)) {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
+            if (item.name.equals(AGED_BRIE)) {
+                defaultSellInDecrement(item);
+                if (item.quality < 50) {
+                    item.quality++;
                 }
-                defaultSellInDecrement(i);
-                if (items[i].quality < 50 && items[i].sellIn < 0) {
-                    items[i].quality = items[i].quality + 1;
+                if (item.quality < 50 && item.sellIn < 0) {
+                    item.quality++;
                 }
                 continue;
             }
 
-            defaultProcessing(i);
+            item.process();
         }
     }
 
-    private void defaultProcessing(int i) {
-        if (items[i].quality > 0) {
-            items[i].quality = items[i].quality - 1;
-        }
-
-        defaultSellInDecrement(i);
-
-        if (items[i].sellIn < 0 && items[i].quality > 0) {
-            items[i].quality = items[i].quality - 1;
-        }
-    }
-
-    private void defaultSellInDecrement(int i) {
-        items[i].sellIn = items[i].sellIn - 1;
+    private void defaultSellInDecrement(Item item) {
+        item.sellIn--;
     }
 
 }
