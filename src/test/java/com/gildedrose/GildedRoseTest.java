@@ -6,7 +6,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 class GildedRoseTest {
-    private static final String AGED_BRIE = "Aged Brie";
     private static final String DEFAULT = "some default item";
     private static final String CONCERT = "Backstage passes to a TAFKAL80ETC concert";
     private GildedRose app;
@@ -45,34 +44,6 @@ class GildedRoseTest {
         app.updateItems();
 
         assertThat(items[0].quality, equalTo(1));
-    }
-
-    //aged brie
-
-    //given -> sellIn is greater than 0
-        // it -> should decrement sellIn by 1
-    //given -> sellIn is less than 0
-        //and -> quality is less than 50
-            //it -> should increase quality by two
-
-    @Test
-    void given_SellInIsGreaterThanZero_then_shouldDecrementSellInByOne() {
-        Item[] items = {new Item(AGED_BRIE, 3, 3)};
-        app = new GildedRose(items);
-
-        app.updateItems();
-
-        assertThat(app.items[0].sellIn, equalTo(2));
-    }
-
-    @Test
-    void given_SellInIsLessThanZero_and_QualityIsLessThanFifty_then_QualityShouldIncreaseByTwo() {
-        Item[] items = {new Item(AGED_BRIE, -1, 40)};
-        app = new GildedRose(items);
-
-        app.updateItems();
-
-        assertThat(app.items[0].quality, equalTo(42));
     }
 
     //concert
