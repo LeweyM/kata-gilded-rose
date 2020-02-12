@@ -25,7 +25,7 @@ public class TexttestFixture {
 
         for (int i = 0; i < days; i++) {
             sb.append(serializeDay(items, i));
-            app.updateQuality();
+            app.updateItems();
         }
 
         return sb.toString();
@@ -67,7 +67,7 @@ public class TexttestFixture {
 
         for (int i = 0; i < days; i++) {
             System.out.print(serializeDay(items, i));
-            app.updateQuality();
+            app.updateItems();
         }
     }
 }

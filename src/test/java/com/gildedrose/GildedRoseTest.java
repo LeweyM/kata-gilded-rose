@@ -23,7 +23,7 @@ class GildedRoseTest {
         Item[] items = {new Item(DEFAULT, 3, 3)};
         app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertThat(items[0].sellIn, equalTo(2));
     }
@@ -33,7 +33,7 @@ class GildedRoseTest {
         Item[] items = {new Item(DEFAULT, 3, 3)};
         app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertThat(items[0].quality, equalTo(2));
     }
@@ -42,7 +42,7 @@ class GildedRoseTest {
         Item[] items = {new Item(DEFAULT, -3, 3)};
         app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertThat(items[0].quality, equalTo(1));
     }
@@ -60,7 +60,7 @@ class GildedRoseTest {
         Item[] items = {new Item(AGED_BRIE, 3, 3)};
         app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertThat(app.items[0].sellIn, equalTo(2));
     }
@@ -70,7 +70,7 @@ class GildedRoseTest {
         Item[] items = {new Item(AGED_BRIE, -1, 40)};
         app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertThat(app.items[0].quality, equalTo(42));
     }
@@ -93,7 +93,7 @@ class GildedRoseTest {
         Item[] items = {new Item(CONCERT, 12, 40)};
         app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertThat(app.items[0].quality, equalTo(41));
     }
@@ -103,7 +103,7 @@ class GildedRoseTest {
         Item[] items = {new Item(CONCERT, 8, 40)};
         app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertThat(app.items[0].quality, equalTo(42));
     }
@@ -113,7 +113,7 @@ class GildedRoseTest {
         Item[] items = {new Item(CONCERT, 4, 40)};
         app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertThat(app.items[0].quality, equalTo(43));
     }
@@ -123,7 +123,7 @@ class GildedRoseTest {
         Item[] items = {new Item(CONCERT, -8, 60)};
         app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertThat(app.items[0].quality, equalTo(0));
     }

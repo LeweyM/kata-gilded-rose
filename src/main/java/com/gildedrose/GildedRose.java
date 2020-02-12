@@ -10,7 +10,7 @@ class GildedRose {
         this.items = items;
     }
 
-    public void updateQuality() {
+    public void updateItems() {
         for (int i = 0; i < items.length; i++) {
             Item item = items[i];
 
@@ -19,19 +19,19 @@ class GildedRose {
             }
 
             if (item.name.equals(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT)) {
+                defaultSellInDecrement(item);
                 if (item.quality < 50) {
                     item.quality++;
 
-                    if (item.sellIn < 11 && item.quality < 50) {
+                    if (item.sellIn < 10 && item.quality < 50) {
                         item.quality++;
                     }
 
-                    if (item.sellIn < 6 && item.quality < 50) {
+                    if (item.sellIn < 5 && item.quality < 50) {
                         item.quality++;
                     }
                 }
 
-                defaultSellInDecrement(item);
 
                 if (item.sellIn < 0) {
                     item.quality = 0;
@@ -44,13 +44,15 @@ class GildedRose {
                 if (item.quality < 50) {
                     item.quality++;
                 }
+
                 if (item.quality < 50 && item.sellIn < 0) {
                     item.quality++;
                 }
                 continue;
             }
 
-            item.process();
+            item.updateSellIn();
+            item.updateQuality();
         }
     }
 
