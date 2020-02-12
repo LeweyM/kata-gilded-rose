@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.Items;
 
 public class Concert extends Item {
     public Concert(String name, int sellIn, int quality) {

@@ -1,5 +1,10 @@
 package com.gildedrose;
 
+import com.gildedrose.Items.AgedBrie;
+import com.gildedrose.Items.Concert;
+import com.gildedrose.Items.Item;
+import com.gildedrose.Items.Sulfuras;
+
 public class TexttestFixture {
 
     private final GildedRose app;

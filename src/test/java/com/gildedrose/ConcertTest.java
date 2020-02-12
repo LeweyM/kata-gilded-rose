@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import com.gildedrose.Items.Concert;
+import com.gildedrose.Items.Item;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

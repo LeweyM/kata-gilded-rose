@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import com.gildedrose.Items.Item;
+
 class GildedRose {
     Item[] items;
 
@@ -15,5 +17,4 @@ class GildedRose {
             item.updateQuality();
         }
     }
-
 }
