@@ -12,21 +12,18 @@ public class Concert extends Item {
 
     @Override
     public void updateQuality() {
-        if (quality < 50) {
-            quality++;
-
-            if (sellIn < 10 && quality < 50) {
-                quality++;
-            }
-
-            if (sellIn < 5 && quality < 50) {
-                quality++;
-            }
-        }
-
-
         if (sellIn < 0) {
             quality = 0;
+            return;
         }
+
+        if (sellIn < 5 && quality < 48) {
+            quality += 3;
+        } else if (sellIn >= 5 && sellIn < 10 && quality < 49) {
+            quality += 2;
+        } else if (quality < 50) {
+            quality++;
+        }
+
     }
 }
